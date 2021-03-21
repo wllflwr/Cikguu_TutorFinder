@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "371135964082",
+    "project_id": "cikguu-app",
+    "storage_bucket": "cikguu-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371135964082:android:21775026148179562dfaab",
+        "android_client_info": {
+          "package_name": "com.example.cikguu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371135964082-natqhpvndn49554ilgdg2mm5up6ugbno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANYK3vjs0i7Wz7orVMN2-IQ_hbsMJ9Lnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371135964082-natqhpvndn49554ilgdg2mm5up6ugbno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
