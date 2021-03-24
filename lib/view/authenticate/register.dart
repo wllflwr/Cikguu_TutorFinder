@@ -45,44 +45,51 @@ class _RegisterState extends State<Register> {
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
               children: <Widget>[
                 //name
                 SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Full Name'),
                   validator: (val) => val.isEmpty ? 'Enter name!' : null,
                   onChanged: (val) {
                     setState(() => name = val);
                   },
                 ),
+
                 //phone
                 SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Phone Number'),
                   validator: (val) =>
                       val.isEmpty ? 'Enter phone number!' : null,
                   onChanged: (val) {
                     setState(() => phone = val);
                   },
                 ),
+
                 //email
                 SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Email'),
                   validator: (val) => val.isEmpty ? 'Enter email!' : null,
                   onChanged: (val) {
                     setState(() => email = val);
                   },
                 ),
+
                 //password
                 SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Password'),
                   validator: (val) =>
                       val.length < 6 ? 'Password too short' : null,
                   obscureText: true,
@@ -90,16 +97,21 @@ class _RegisterState extends State<Register> {
                     setState(() => password = val);
                   },
                 ),
+
                 //user type
+                SizedBox(
+                  height: 20.0,
+                ),
                 DropdownButton(
+                    hint: Text('Select Role'),
                     value: userT,
                     items: [
                       DropdownMenuItem(
-                        child: Text("Tutor"),
+                        child: Text('Tutor'),
                         value: 1,
                       ),
                       DropdownMenuItem(
-                        child: Text("Tutee"),
+                        child: Text('Tutee'),
                         value: 2,
                       ),
                     ],
@@ -133,7 +145,7 @@ class _RegisterState extends State<Register> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 12.0),
+
                 Text(
                   error,
                   style: TextStyle(

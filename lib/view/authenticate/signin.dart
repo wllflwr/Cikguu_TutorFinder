@@ -1,5 +1,4 @@
 import 'package:cikguu_app/controller/auth.dart';
-import 'package:cikguu_app/view/authenticate/register.dart';
 import 'package:flutter/material.dart';
 
 class SingIn extends StatefulWidget {
@@ -20,13 +19,15 @@ class _SingInState extends State<SingIn> {
   String email = '';
   String password = '';
   String error = '';
+  int userT;
+  String usertype = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Sign In Anon'),
+        title: Text('Sign In'),
         backgroundColor: Colors.purple,
         actions: <Widget>[
           FlatButton.icon(
@@ -49,6 +50,7 @@ class _SingInState extends State<SingIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Email'),
                   validator: (val) => val.isEmpty ? 'Enter email!' : null,
                   onChanged: (val) {
                     setState(() => email = val);
@@ -59,6 +61,7 @@ class _SingInState extends State<SingIn> {
                   height: 20.0,
                 ),
                 TextFormField(
+                  decoration: InputDecoration(hintText: 'Password'),
                   validator: (val) =>
                       val.length < 6 ? 'Password too short' : null,
                   obscureText: true,
@@ -66,6 +69,7 @@ class _SingInState extends State<SingIn> {
                     setState(() => password = val);
                   },
                 ),
+
                 //sign in button
                 SizedBox(
                   height: 20.0,

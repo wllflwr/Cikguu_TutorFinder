@@ -1,6 +1,5 @@
 class User {
   final String uid;
-  User({this.uid});
-
-  final String userType;
+  final String utype;
+  User({this.uid, this.utype});
 }

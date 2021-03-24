@@ -1,4 +1,4 @@
-import 'package:cikguu_app/controller/userdata.dart';
+import 'package:cikguu_app/controller/profiledata.dart';
 import 'package:cikguu_app/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -7,14 +7,18 @@ class AuthService {
 
   // create user object based on FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    //return user != null ? User(uid: user.uid) : null;
+    if (user != null) {
+      return User(uid: user.uid);
+    } else {
+      return null;
+    }
   }
 
   // auth user change stream
   Stream<User> get user {
-    return _auth.onAuthStateChanged
-        //.map((FirebaseUser user) => _userFromFirebaseUser(user));
-        .map(_userFromFirebaseUser);
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+    //.map((FirebaseUser user) => _userFromFirebaseUser(user));
   }
 
   // sign in anon
@@ -55,8 +59,9 @@ class AuthService {
       FirebaseUser user = result.user;
 
       // create users main details
-      await UserDataService(uid: user.uid)
-          .updateUserData(usertype, name, phone);
+      await ProfileDataService(
+        uid: user.uid,
+      ).updateProfileData(usertype, name, phone);
 
       return _userFromFirebaseUser(user);
     } catch (e) {
