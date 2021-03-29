@@ -61,7 +61,7 @@ class AuthService {
       // create users main details
       await ProfileDataService(
         uid: user.uid,
-      ).updateProfileData(usertype, name, phone);
+      ).createProfileData(usertype, name, phone);
 
       return _userFromFirebaseUser(user);
     } catch (e) {
