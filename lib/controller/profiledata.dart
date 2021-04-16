@@ -1,8 +1,6 @@
+//import 'package:cikguu_app/controller/scheduledata.dart';
 import 'package:cikguu_app/model/profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:firebase_storage/firebase_storage.dart';
-//import 'dart:io';
-//import 'package:image_picker/image_picker.dart';
 
 class ProfileDataService {
   final String uid;
@@ -24,10 +22,23 @@ class ProfileDataService {
       education: snapshot.data['education'],
       extraInfo: snapshot.data['extraInfo'],
       image: snapshot.data['image'],
+      exam: snapshot.data['exam'],
+      spm: snapshot.data['spm'],
+      pt3: snapshot.data['pt3'],
     );
   }
 
+  // get profile stream
+  Stream<Profile> get profile {
+    return profileCollection
+        .document(uid)
+        .snapshots()
+        .map(_profileFromSnapshot);
+  }
+
   // create profile data
+  String img =
+      'https://firebasestorage.googleapis.com/v0/b/cikguu-app.appspot.com/o/data%2Fuser%2F0%2Fcom.example.cikguu_app%2Fcache%2Fuser.png?alt=media&token=764e87b9-d621-4bee-bd4c-3ce5f6ec8b08';
   Future createProfileData(
       String userType, String fullName, String phoneNumber) async {
     return await profileCollection.document(uid).setData({
@@ -38,6 +49,9 @@ class ProfileDataService {
       'address': 'Please fill',
       'education': 'Please fill',
       'extraInfo': 'Please fill',
+      'image': img,
+      'spm': [],
+      'pt3': [],
     });
   }
 
@@ -54,18 +68,31 @@ class ProfileDataService {
     });
   }
 
+  // update subjects array
+  Future updateSubject(String exam, String subject) async {
+    return await profileCollection.document(uid).updateData({
+      exam: FieldValue.arrayUnion([subject]),
+    });
+  }
+
+  // delete subject from array
+  Future deleteSubject(String exam, String subject) async {
+    return await profileCollection.document(uid).updateData({
+      exam: FieldValue.arrayRemove([subject]),
+    });
+  }
+
+  // update teaching info
+  Future updateTutoringData(String exam, String subject) async {
+    return await profileCollection
+        .document(uid)
+        .updateData({'exam': exam, 'subject': subject});
+  }
+
   // update image data
   Future updateProfileImageData(String url) async {
     return await profileCollection.document(uid).updateData({
       'image': url,
     });
-  }
-
-  // get profile stream
-  Stream<Profile> get profile {
-    return profileCollection
-        .document(uid)
-        .snapshots()
-        .map(_profileFromSnapshot);
   }
 }

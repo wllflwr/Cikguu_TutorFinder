@@ -33,6 +33,12 @@ dependencies:
   provider: ^3.1.0
   flutter_icons: ^1.1.0
 
+  intl: ^0.16.1
+  table_calendar: ^2.0.1
+  flutter_swiper: ^1.1.6
+  flutter_week_view: ^1.0.0+2
+  shared_preferences: ^0.5.4+6
+  
   image_picker: ^0.6.7+11
   image_cropper: 1.0.2
   firebase_storage: 3.0.4

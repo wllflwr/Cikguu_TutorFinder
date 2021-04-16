@@ -1,10 +1,6 @@
-//import 'package:cikguu_app/controller/auth.dart';
-//import 'dart:html';
-
 import 'package:cikguu_app/controller/profiledata.dart';
 import 'package:cikguu_app/model/profile.dart';
-import 'package:cikguu_app/view/home/tutor/bottomnav.dart';
-import 'package:cikguu_app/view/home/tutor/manage/imageTutor.dart';
+import 'package:cikguu_app/view/home/tutor/manageTutor/imageTutor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,12 +10,8 @@ class ProfileTutor extends StatefulWidget {
 }
 
 class _ProfileTutorState extends State<ProfileTutor> {
-  //final AuthService _auth = AuthService();
-  // form validation key check
   final _formKey = GlobalKey<FormState>();
 
-  // text field state
-  //String email = '';
   String _name = '';
   String _phone = '';
   String _bio = '';
@@ -164,7 +156,6 @@ class _ProfileTutorState extends State<ProfileTutor> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigation(),
     );
   }
 }

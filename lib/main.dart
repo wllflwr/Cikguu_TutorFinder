@@ -1,6 +1,5 @@
 import 'package:cikguu_app/controller/auth.dart';
 import 'package:cikguu_app/model/user.dart';
-//import 'package:cikguu_app/view/home/tutor/manage/imageTutor.dart';
 import 'package:cikguu_app/view/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

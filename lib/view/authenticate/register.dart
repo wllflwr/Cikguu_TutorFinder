@@ -1,4 +1,5 @@
 import 'package:cikguu_app/controller/auth.dart';
+//import 'package:cikguu_app/controller/scheduledata.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -134,6 +135,7 @@ class _RegisterState extends State<Register> {
                     if (_formKey.currentState.validate()) {
                       dynamic result = await _auth.registerWithEmailAndPassword(
                           usertype, name, phone, email, password);
+
                       if (result == null) {
                         setState(() => error = 'Email invalid');
                       }

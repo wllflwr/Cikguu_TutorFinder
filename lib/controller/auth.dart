@@ -1,4 +1,5 @@
 import 'package:cikguu_app/controller/profiledata.dart';
+//import 'package:cikguu_app/controller/scheduledata.dart';
 import 'package:cikguu_app/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -62,6 +63,12 @@ class AuthService {
       await ProfileDataService(
         uid: user.uid,
       ).createProfileData(usertype, name, phone);
+
+      // print('create schedule..');
+      // // create tutor schedule
+      // if (usertype == 'tutor') {
+      //   await ScheduleDataService(uid: user.uid).createScheduleData();
+      // }
 
       return _userFromFirebaseUser(user);
     } catch (e) {

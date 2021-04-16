@@ -8,6 +8,9 @@ class Profile {
   final String education;
   final String extraInfo;
   final String image;
+  final String exam;
+  final List<dynamic> spm;
+  final List<dynamic> pt3;
 
   Profile({
     this.uid,
@@ -19,5 +22,20 @@ class Profile {
     this.education,
     this.extraInfo,
     this.image,
+    this.exam,
+    this.spm,
+    this.pt3,
   });
+
+  String toString() {
+    return uid +
+        userType +
+        fullName +
+        phoneNumber +
+        bio +
+        address +
+        education +
+        extraInfo +
+        image;
+  }
 }
