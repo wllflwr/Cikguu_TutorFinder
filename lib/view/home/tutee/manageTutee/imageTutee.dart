@@ -8,12 +8,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 //import 'package:firebase_storage/firebase_storage.dart';
 
-class ImageTutor extends StatefulWidget {
+class ImageTutee extends StatefulWidget {
   @override
-  _ImageTutorState createState() => _ImageTutorState();
+  _ImageTuteeState createState() => _ImageTuteeState();
 }
 
-class _ImageTutorState extends State<ImageTutor> {
+class _ImageTuteeState extends State<ImageTutee> {
   File _image;
 
   // Image Picker
@@ -27,6 +27,8 @@ class _ImageTutorState extends State<ImageTutor> {
 
     setState(() {
       _image = File(pickedFile.path);
+      print('_image');
+      print(_image);
     });
 /*
     if (pickedFile != null) {
@@ -47,6 +49,7 @@ class _ImageTutorState extends State<ImageTutor> {
     StorageReference firebaseStorage =
         FirebaseStorage.instance.ref().child(_image.path);
     StorageUploadTask uploadStorage = firebaseStorage.putFile(_image);
+
     //StorageTaskSnapshot taskSnapshot =
     await uploadStorage.onComplete;
     setState(() {
@@ -56,6 +59,8 @@ class _ImageTutorState extends State<ImageTutor> {
 
     await firebaseStorage.getDownloadURL().then((fileURL) {
       returnURL = fileURL;
+      print('returnURL');
+      print(returnURL);
     });
   }
 
@@ -97,16 +102,16 @@ class _ImageTutorState extends State<ImageTutor> {
               shape: CircleBorder(),
             ),
             RaisedButton(
-              onPressed: () {
+              onPressed: () async {
                 uploadImage(context);
+                await ProfileDataService(uid: profile.uid)
+                    .updateProfileImageData(getURL());
               },
               child: Text('Upload'),
             ),
             RaisedButton(
               onPressed: () async {
                 Navigator.pop(context);
-                await ProfileDataService(uid: profile.uid)
-                    .updateProfileImageData(getURL());
               },
               child: Text('Back'),
             )
