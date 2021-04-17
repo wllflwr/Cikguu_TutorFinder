@@ -1,7 +1,5 @@
-//import 'dart:html';
 import 'dart:ui';
-
-//import 'package:cikguu_app/controller/subjectdata.dart';
+import 'package:cikguu_app/controller/browseDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -41,7 +39,15 @@ class _BrowseResultState extends State<BrowseResult> {
                   child: Container(
                     child: Card(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BrowseDetails(
+                                      idTutor: document.documentID,
+                                    )),
+                          );
+                        },
                         child: Row(
                           children: <Widget>[
                             ClipOval(
