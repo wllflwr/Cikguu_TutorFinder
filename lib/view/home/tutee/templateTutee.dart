@@ -2,6 +2,7 @@ import 'package:cikguu_app/controller/auth.dart';
 import 'package:cikguu_app/view/home/tutee/browse/browseTutee.dart';
 import 'package:cikguu_app/view/home/tutee/homeTutee.dart';
 import 'package:cikguu_app/view/home/tutee/manageTutee/profileTutee.dart';
+import 'package:cikguu_app/view/home/tutee/sessionTutee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -21,10 +22,7 @@ class _TemplateTuteeState extends State<TemplateTutee> {
   List<Widget> _widgetOptions = <Widget>[
     HomeTutee(),
     BrowseTutee(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    SessionTutee(),
     Text(
       'Index 3: Settings',
       style: optionStyle,

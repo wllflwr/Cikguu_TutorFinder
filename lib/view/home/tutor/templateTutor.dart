@@ -1,7 +1,9 @@
 import 'package:cikguu_app/controller/auth.dart';
+import 'package:cikguu_app/view/home/tutor/historyTutor.dart';
 import 'package:cikguu_app/view/home/tutor/homeTutor.dart';
 import 'package:cikguu_app/view/home/tutor/manageTutor/subjectTutor.dart';
 import 'package:cikguu_app/view/home/tutor/scheduleTutor.dart';
+import 'package:cikguu_app/view/home/tutor/sessionTutor/sessionTutor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -16,19 +18,13 @@ class _TemplateTutorState extends State<TemplateTutor> {
   final AuthService _auth = AuthService();
 
   int _selectedIndex = 0;
-  static TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  //static TextStyle optionStyle =
+  //TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     HomeTutor(),
     ScheduleTutor(),
-    Text(
-      'Index 2: School tutor',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    SessionTutor(),
+    HistoryTutor(),
   ];
 
   void _onItemTapped(int index) {

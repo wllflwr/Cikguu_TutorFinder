@@ -10,6 +10,7 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
     //final profile = Provider.of<Profile>(context);
     print('trying to see user in wrapper');
+    //return Authenticate();
 
     // return Authenticate or HomeTutor or HomeTutee
     if (user == null) {

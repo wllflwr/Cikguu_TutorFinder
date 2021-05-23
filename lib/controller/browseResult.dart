@@ -45,6 +45,7 @@ class _BrowseResultState extends State<BrowseResult> {
                             MaterialPageRoute(
                                 builder: (context) => BrowseDetails(
                                       idTutor: document.documentID,
+                                      subject: widget.subject,
                                     )),
                           );
                         },

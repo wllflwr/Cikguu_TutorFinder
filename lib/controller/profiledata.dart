@@ -1,4 +1,3 @@
-//import 'package:cikguu_app/controller/scheduledata.dart';
 import 'package:cikguu_app/model/profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
