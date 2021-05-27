@@ -25,16 +25,11 @@ class _SubjectTutorState extends State<SubjectTutor>
     final profile = Provider.of<Profile>(context);
 
     String spm = 'spm';
-    String pt3 = 'pt3';
 
     // spm
     bool _bio = profile.spm.contains('biology') ? true : false;
     bool _chem = profile.spm.contains('chemistry') ? true : false;
     bool _phy = profile.spm.contains('physic') ? true : false;
-
-    // pt3
-    bool _eng = profile.pt3.contains('english') ? true : false;
-    bool _math = profile.pt3.contains('mathematics') ? true : false;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -141,64 +136,6 @@ class _SubjectTutorState extends State<SubjectTutor>
                   }),
             ],
           ),
-
-          //PT3
-          Column(children: <Widget>[
-            FilterChip(
-                selected: _eng,
-                label: Text('English'),
-                //avatar: Text('W'),
-                onSelected: (bool selected) async {
-                  setState(() {
-                    _eng = !_eng;
-                  });
-                  if (_eng) {
-                    // add in subject collection
-                    await SubjectDataService(uid: profile.uid)
-                        .addSubjectTutorPT3(
-                            profile.fullName, profile.image, 'english');
-
-                    // add in profile collection
-                    await ProfileDataService(uid: profile.uid)
-                        .updateSubject(pt3, 'english');
-                  } else {
-                    // remove in profile collection
-                    await SubjectDataService(uid: profile.uid)
-                        .deleteSubjectTutorPT3('english');
-
-                    // remove from profile subject array
-                    await ProfileDataService(uid: profile.uid)
-                        .deleteSubject(pt3, 'english');
-                  }
-                }),
-            FilterChip(
-                selected: _math,
-                label: Text('Mathematics'),
-                //avatar: Text('W'),
-                onSelected: (bool selected) async {
-                  setState(() {
-                    _math = !_math;
-                  });
-                  if (_math) {
-                    // add in subject collection
-                    await SubjectDataService(uid: profile.uid)
-                        .addSubjectTutorPT3(
-                            profile.fullName, profile.image, 'mathematics');
-
-                    // add in profile collection
-                    await ProfileDataService(uid: profile.uid)
-                        .updateSubject(pt3, 'mathematics');
-                  } else {
-                    // remove in profile collection
-                    await SubjectDataService(uid: profile.uid)
-                        .deleteSubjectTutorPT3('mathematics');
-
-                    // remove from profile subject array
-                    await ProfileDataService(uid: profile.uid)
-                        .deleteSubject(pt3, 'mathematics');
-                  }
-                }),
-          ])
         ],
       ),
     );

@@ -1,6 +1,6 @@
 class Profile {
   final String uid;
-  final String userType;
+  final bool type;
   final String fullName;
   final String phoneNumber;
   final String bio;
@@ -14,7 +14,7 @@ class Profile {
 
   Profile({
     this.uid,
-    this.userType,
+    this.type,
     this.fullName,
     this.phoneNumber,
     this.bio,
@@ -29,7 +29,7 @@ class Profile {
 
   String toString() {
     return uid +
-        userType +
+        type.toString() +
         fullName +
         phoneNumber +
         bio +

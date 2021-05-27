@@ -1,7 +1,7 @@
 import 'package:cikguu_app/controller/profiledata.dart';
 import 'package:cikguu_app/model/profile.dart';
 import 'package:cikguu_app/model/user.dart';
-import 'package:cikguu_app/view/home/homewrapper.dart';
+import 'package:cikguu_app/view/home/users/homewrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

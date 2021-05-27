@@ -1,15 +1,15 @@
-import 'package:cikguu_app/view/home/tutee/manageTutee/imageTutee.dart';
-import 'package:flutter/material.dart';
 import 'package:cikguu_app/controller/profiledata.dart';
 import 'package:cikguu_app/model/profile.dart';
+import 'package:cikguu_app/view/home/users/tutor/manageTutor/imageTutor.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ProfileTutee extends StatefulWidget {
+class ProfileTutor extends StatefulWidget {
   @override
-  _ProfileTuteeState createState() => _ProfileTuteeState();
+  _ProfileTutorState createState() => _ProfileTutorState();
 }
 
-class _ProfileTuteeState extends State<ProfileTutee> {
+class _ProfileTutorState extends State<ProfileTutor> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
@@ -23,7 +23,6 @@ class _ProfileTuteeState extends State<ProfileTutee> {
   Widget build(BuildContext context) {
     final profile = Provider.of<Profile>(context);
     Profile clone = profile;
-    //print(profile.image);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -41,7 +40,7 @@ class _ProfileTuteeState extends State<ProfileTutee> {
               RaisedButton(onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ImageTutee()),
+                  MaterialPageRoute(builder: (context) => ImageTutor()),
                 );
               }),
               // name
@@ -113,7 +112,7 @@ class _ProfileTuteeState extends State<ProfileTutee> {
               ),
 
               //experience
-              Text('Examination'),
+              Text('Experience'),
               TextFormField(
                 initialValue: profile.extraInfo,
                 onChanged: (val) {

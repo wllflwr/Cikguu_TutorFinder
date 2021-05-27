@@ -1,13 +1,14 @@
 import 'package:cikguu_app/controller/browseResult.dart';
 import 'package:flutter/material.dart';
 
-class BrowsePT3 extends StatefulWidget {
+class BrowseTutee extends StatefulWidget {
   @override
-  _BrowsePT3State createState() => _BrowsePT3State();
+  _BrowseTuteeState createState() => _BrowseTuteeState();
 }
 
-class _BrowsePT3State extends State<BrowsePT3> {
-  String exam = 'pt3';
+class _BrowseTuteeState extends State<BrowseTutee> {
+  String exam = 'spm';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,6 +20,53 @@ class _BrowsePT3State extends State<BrowsePT3> {
       mainAxisSpacing: 10,
       crossAxisCount: 2,
       children: <Widget>[
+        //biology
+        OutlineButton(
+          child: new Text("Biology"),
+          borderSide: BorderSide(
+            color: Colors.purple,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    BrowseResult(exam: exam, subject: 'biology'),
+              ),
+            );
+          },
+        ),
+        //chemistry
+        OutlineButton(
+          child: new Text("Chemistry"),
+          borderSide: BorderSide(
+            color: Colors.purple,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      BrowseResult(exam: exam, subject: 'chemistry')),
+            );
+          },
+        ),
+        //physic
+        OutlineButton(
+          child: new Text("Physic"),
+          borderSide: BorderSide(
+            color: Colors.purple,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      BrowseResult(exam: exam, subject: 'physic')),
+            );
+          },
+        ),
+        //mathematics
         OutlineButton(
           child: new Text("Mathematics"),
           borderSide: BorderSide(
@@ -30,48 +78,6 @@ class _BrowsePT3State extends State<BrowsePT3> {
               MaterialPageRoute(
                   builder: (context) =>
                       BrowseResult(exam: exam, subject: 'mathematics')),
-            );
-          },
-        ),
-        OutlineButton(
-          child: new Text("English"),
-          borderSide: BorderSide(
-            color: Colors.purple,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      BrowseResult(exam: exam, subject: 'english')),
-            );
-          },
-        ),
-        OutlineButton(
-          child: new Text("Bahasa Melayu"),
-          borderSide: BorderSide(
-            color: Colors.purple,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      BrowseResult(exam: exam, subject: 'bahasa melayu')),
-            );
-          },
-        ),
-        OutlineButton(
-          child: new Text("Science"),
-          borderSide: BorderSide(
-            color: Colors.purple,
-          ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      BrowseResult(exam: exam, subject: 'science')),
             );
           },
         ),

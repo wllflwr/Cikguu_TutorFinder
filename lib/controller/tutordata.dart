@@ -47,37 +47,9 @@ class TutorDataService {
   }
 
   // get session stream for tutor
-  Stream<List<Session>> get sessiontutorpending {
+  Stream<List<Session>> get sessiontutor {
     return sessionCollection
         .where('tutorid', isEqualTo: id)
-        .where('status', isEqualTo: 'pending')
-        .snapshots()
-        .map(_sessionFromSnapshot);
-  }
-
-  // get session stream for tutor
-  Stream<List<Session>> get sessiontutorongoing {
-    return sessionCollection
-        .where('tutorid', isEqualTo: id)
-        .where('status', isEqualTo: 'accept')
-        .snapshots()
-        .map(_sessionFromSnapshot);
-  }
-
-  // get session stream for tutor
-  Stream<List<Session>> get sessiontutorevaluate {
-    return sessionCollection
-        .where('tutorid', isEqualTo: id)
-        .where('status', isEqualTo: 'ongoing')
-        .snapshots()
-        .map(_sessionFromSnapshot);
-  }
-
-  // get session stream for tutor
-  Stream<List<Session>> get sessiontutorpaid {
-    return sessionCollection
-        .where('tutorid', isEqualTo: id)
-        .where('status', isEqualTo: 'complete')
         .snapshots()
         .map(_sessionFromSnapshot);
   }
@@ -90,10 +62,9 @@ class TutorDataService {
   }
 
   // get session stream for tutee
-  Stream<List<Session>> get sessiontuteepending {
+  Stream<List<Session>> get sessiontutee {
     return sessionCollection
         .where('tuteeid', isEqualTo: id)
-        .where('status', isEqualTo: 'pending')
         .snapshots()
         .map(_sessionFromSnapshot);
   }

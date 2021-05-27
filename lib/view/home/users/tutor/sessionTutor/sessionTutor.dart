@@ -1,6 +1,6 @@
-import 'package:cikguu_app/view/home/tutor/sessionTutor/evaluateTutor.dart';
-import 'package:cikguu_app/view/home/tutor/sessionTutor/ongoingTutor.dart';
-import 'package:cikguu_app/view/home/tutor/sessionTutor/pendingTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/sessionTutor/evaluateTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/sessionTutor/ongoingTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/sessionTutor/pendingTutor.dart';
 import 'package:flutter/material.dart';
 
 class SessionTutor extends StatefulWidget {

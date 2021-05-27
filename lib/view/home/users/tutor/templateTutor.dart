@@ -1,32 +1,31 @@
 import 'package:cikguu_app/controller/auth.dart';
-import 'package:cikguu_app/view/home/tutee/browse/browseTutee.dart';
-import 'package:cikguu_app/view/home/tutee/homeTutee.dart';
-import 'package:cikguu_app/view/home/tutee/manageTutee/profileTutee.dart';
-import 'package:cikguu_app/view/home/tutee/sessionTutee.dart';
+import 'package:cikguu_app/view/home/users/tutor/historyTutor/historyTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/homeTutor/homeTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/loading.dart';
+import 'package:cikguu_app/view/home/users/tutor/manageTutor/subjectTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/scheduleTutor/scheduleTutor.dart';
+import 'package:cikguu_app/view/home/users/tutor/sessionTutor/sessionTutor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-class TemplateTutee extends StatefulWidget {
+import 'manageTutor/profileTutor.dart';
+
+class TemplateTutor extends StatefulWidget {
   @override
-  _TemplateTuteeState createState() => _TemplateTuteeState();
+  _TemplateTutorState createState() => _TemplateTutorState();
 }
 
-class _TemplateTuteeState extends State<TemplateTutee> {
+class _TemplateTutorState extends State<TemplateTutor> {
   final AuthService _auth = AuthService();
 
   int _selectedIndex = 0;
-  static TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  // list of bottom navigation page
+  //static TextStyle optionStyle =
+  //TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    HomeTutee(),
-    BrowseTutee(),
-    SessionTutee(),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    HomeTutor(),
+    ScheduleTutor(),
+    SessionTutor(),
+    HistoryTutor(),
   ];
 
   void _onItemTapped(int index) {
@@ -38,13 +37,10 @@ class _TemplateTuteeState extends State<TemplateTutee> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // setting knob
       appBar: AppBar(
-        title: Text('Tutee'),
+        title: Text('Tutor Home'),
         backgroundColor: Colors.blue,
       ),
-
-      // setting
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -67,7 +63,27 @@ class _TemplateTuteeState extends State<TemplateTutee> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfileTutee()),
+                  MaterialPageRoute(builder: (context) => ProfileTutor()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Manage Tutoring'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SubjectTutor()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Test Loading'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Loading()),
                 );
               },
             ),
@@ -84,25 +100,23 @@ class _TemplateTuteeState extends State<TemplateTutee> {
           ],
         ),
       ),
-
-      // page content
       body: _widgetOptions.elementAt(_selectedIndex),
-
-      // bottom navigation
       bottomNavigationBar: BottomNavigationBar(
+        //type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.blue,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text('Home'),
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
+            //icon: Image.asset('assets/search.png'),
             icon: Icon(Entypo.calendar),
-            title: Text('Browse'),
-            backgroundColor: Colors.blue,
+            title: Text('Business'),
           ),
           BottomNavigationBarItem(
             icon: Icon(MaterialIcons.assignment),

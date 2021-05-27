@@ -1,3 +1,0 @@
-class SPMSubject {
-  String biology;
-}

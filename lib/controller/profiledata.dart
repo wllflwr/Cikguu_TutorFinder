@@ -13,7 +13,7 @@ class ProfileDataService {
   Profile _profileFromSnapshot(DocumentSnapshot snapshot) {
     return Profile(
       uid: uid,
-      userType: snapshot.data['userType'],
+      type: snapshot.data['userType'],
       fullName: snapshot.data['fullName'],
       phoneNumber: snapshot.data['phoneNumber'],
       bio: snapshot.data['bio'],
@@ -39,7 +39,7 @@ class ProfileDataService {
   String img =
       'https://firebasestorage.googleapis.com/v0/b/cikguu-app.appspot.com/o/data%2Fuser%2F0%2Fcom.example.cikguu_app%2Fcache%2Fuser.png?alt=media&token=764e87b9-d621-4bee-bd4c-3ce5f6ec8b08';
   Future createProfileData(
-      String userType, String fullName, String phoneNumber) async {
+      bool userType, String fullName, String phoneNumber) async {
     return await profileCollection.document(uid).setData({
       'userType': userType,
       'fullName': fullName,

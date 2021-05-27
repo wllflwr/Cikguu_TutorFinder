@@ -1,30 +1,29 @@
 import 'package:cikguu_app/controller/auth.dart';
-import 'package:cikguu_app/view/home/tutor/historyTutor.dart';
-import 'package:cikguu_app/view/home/tutor/homeTutor.dart';
-import 'package:cikguu_app/view/home/tutor/manageTutor/subjectTutor.dart';
-import 'package:cikguu_app/view/home/tutor/scheduleTutor.dart';
-import 'package:cikguu_app/view/home/tutor/sessionTutor/sessionTutor.dart';
+import 'package:cikguu_app/view/home/users/tutee/browseTutee/browseTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/historyTutee/historyTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/homeTutee/homeTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/manageTutee/profileTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/sessionTutee/sessionTutee.dart';
+import 'package:cikguu_app/view/home/users/tutor/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-import 'manageTutor/profileTutor.dart';
-
-class TemplateTutor extends StatefulWidget {
+class TemplateTutee extends StatefulWidget {
   @override
-  _TemplateTutorState createState() => _TemplateTutorState();
+  _TemplateTuteeState createState() => _TemplateTuteeState();
 }
 
-class _TemplateTutorState extends State<TemplateTutor> {
+class _TemplateTuteeState extends State<TemplateTutee> {
   final AuthService _auth = AuthService();
 
   int _selectedIndex = 0;
-  //static TextStyle optionStyle =
-  //TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  // list of bottom navigation page
   List<Widget> _widgetOptions = <Widget>[
-    HomeTutor(),
-    ScheduleTutor(),
-    SessionTutor(),
-    HistoryTutor(),
+    HomeTutee(),
+    BrowseTutee(),
+    SessionTutee(),
+    HistoryTutee(),
   ];
 
   void _onItemTapped(int index) {
@@ -36,10 +35,13 @@ class _TemplateTutorState extends State<TemplateTutor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // setting knob
       appBar: AppBar(
-        title: Text('Tutor Home'),
-        backgroundColor: Colors.blue,
+        title: Text('Tutee'),
+        backgroundColor: Colors.white,
       ),
+
+      // setting
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -62,17 +64,17 @@ class _TemplateTutorState extends State<TemplateTutor> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfileTutor()),
+                  MaterialPageRoute(builder: (context) => ProfileTutee()),
                 );
               },
             ),
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('Manage Tutoring'),
+              title: Text('Test Loading'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SubjectTutor()),
+                  MaterialPageRoute(builder: (context) => Loading()),
                 );
               },
             ),
@@ -89,21 +91,26 @@ class _TemplateTutorState extends State<TemplateTutor> {
           ],
         ),
       ),
+
+      // page content
       body: _widgetOptions.elementAt(_selectedIndex),
+
+      // bottom navigation
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text('Home'),
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Entypo.calendar),
-            title: Text('Business'),
+            icon: Image.asset('assets/search.png'),
+            //icon: Icon(Entypo.calendar),
+            title: Text('Browse'),
+            backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
             icon: Icon(MaterialIcons.assignment),

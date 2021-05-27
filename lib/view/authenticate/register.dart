@@ -21,7 +21,7 @@ class _RegisterState extends State<Register> {
   String password = '';
   String name = '';
   String phone = '';
-  String usertype = '';
+  bool usertype;
   int userT;
   String error = '';
 
@@ -120,9 +120,9 @@ class _RegisterState extends State<Register> {
                       setState(() {
                         userT = val;
                         if (userT == 1) {
-                          usertype = 'tutor';
+                          usertype = true;
                         } else {
-                          usertype = 'tutee';
+                          usertype = false;
                         }
                       });
                     }),

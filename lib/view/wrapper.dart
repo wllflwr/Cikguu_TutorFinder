@@ -8,16 +8,10 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    //final profile = Provider.of<Profile>(context);
-    print('trying to see user in wrapper');
-    //return Authenticate();
 
-    // return Authenticate or HomeTutor or HomeTutee
     if (user == null) {
       return Authenticate();
     } else {
-      //print(user.uid);
-      //print(profile.userType);
       return Home();
     }
   }

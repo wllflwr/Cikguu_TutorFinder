@@ -49,8 +49,8 @@ class AuthService {
   }
 
   // register email & password
-  Future registerWithEmailAndPassword(String usertype, String name,
-      String phone, String email, String password) async {
+  Future registerWithEmailAndPassword(bool usertype, String name, String phone,
+      String email, String password) async {
     try {
       //create user email and password
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -66,7 +66,7 @@ class AuthService {
 
       // print('create schedule..');
       // create tutor schedule
-      if (usertype == 'tutor') {
+      if (usertype) {
         await ScheduleDataService(uid: user.uid).createScheduleData();
       }
 
