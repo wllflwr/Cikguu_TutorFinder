@@ -1,9 +1,9 @@
 import 'package:cikguu_app/model/profile.dart';
-import 'package:cikguu_app/view/home/users/tutee/sessionwrapper.dart';
+import 'package:cikguu_app/view/home/loading.dart';
+import 'package:cikguu_app/view/home/users/tutee/sessionwrapperTutee.dart';
 import 'package:cikguu_app/view/home/users/tutor/sessionwrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeWrapper extends StatelessWidget {
   @override
@@ -12,17 +12,7 @@ class HomeWrapper extends StatelessWidget {
     //print(profile.type);
 
     if (profile == null) {
-      return Center(
-        child: SpinKitPouringHourglass(
-          color: Colors.pinkAccent,
-          size: 50.0,
-        ),
-      );
-      // return Center(
-      //   child: CircularProgressIndicator(
-      //     backgroundColor: Colors.white,
-      //   ),
-      // );
+      return Loading();
     } else {
       return MaterialApp(
         home: profile.type ? SessionWrapperTutor() : SessionWrapperTutee(),

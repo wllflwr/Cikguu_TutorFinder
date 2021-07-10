@@ -40,6 +40,9 @@ class _BrowseDetailsState extends State<BrowseDetails>
   String dt;
   String dy;
 
+  List<String> _scheduleDay = new List(7);
+  String harini = 'Today';
+
   /// This decides which day will be enabled
   /// This will be called every time while displaying day in calender.
   bool _decideWhichDayToEnable(DateTime day) {
@@ -123,71 +126,132 @@ class _BrowseDetailsState extends State<BrowseDetails>
               }),
 
           //schedule
-          StreamBuilder(
-              stream: ScheduleDataService(uid: widget.idTutor).schedule,
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<Schedule>> snapshot) {
-                if (snapshot.hasData) {
-                  List<Schedule> scheduleData = snapshot.data;
+          Container(
+            child: StreamBuilder(
+                stream: ScheduleDataService(uid: widget.idTutor).schedule,
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Schedule>> snapshot) {
+                  if (snapshot.hasData) {
+                    List<Schedule> scheduleData = snapshot.data;
 
-                  return ListView.builder(
-                    itemCount: scheduleData.length,
-                    itemBuilder: (context, index) {
-                      return Center(
-                        child: Card(
-                          color: scheduleData[index].id == day.toLowerCase()
-                              ? Colors.pink[100]
-                              : Colors.white,
-                          child: Center(
-                            child: Column(
-                              children: <Widget>[
-                                Text(scheduleData[index].id),
-                                Center(
-                                  child: Row(
-                                    children: <Widget>[
-                                      RaisedButton(
-                                        color: scheduleData[index].slot1
-                                            ? Colors.redAccent
-                                            : Colors.greenAccent,
-                                        onPressed: () {},
-                                        child: Text(scheduleData[index]
-                                            .slot1
-                                            .toString()),
-                                      ),
-                                      RaisedButton(
+                    return ListView.builder(
+                      itemCount: scheduleData.length,
+                      itemBuilder: (context, index) {
+                        switch (scheduleData[index].id) {
+                          case "mon":
+                            {
+                              _scheduleDay[index] = 'Monday';
+                            }
+                            break;
+
+                          case "tue":
+                            {
+                              _scheduleDay[index] = 'Tuesday';
+                            }
+                            break;
+
+                          case "wed":
+                            {
+                              _scheduleDay[index] = 'Wednesday';
+                            }
+                            break;
+
+                          case "thu":
+                            {
+                              _scheduleDay[index] = 'Thursday';
+                            }
+                            break;
+                          case "fri":
+                            {
+                              _scheduleDay[index] = 'Friday';
+                            }
+                            break;
+                          case "sat":
+                            {
+                              _scheduleDay[index] = 'Saturday';
+                            }
+                            break;
+                          case "sun":
+                            {
+                              _scheduleDay[index] = 'Sunday';
+                            }
+                            break;
+                        }
+
+                        return Center(
+                          child: Container(
+                            margin:
+                                EdgeInsets.only(top: 20, right: 20, left: 20),
+                            padding: EdgeInsets.all(20),
+                            color: scheduleData[index].id == day.toLowerCase()
+                                ? Colors.pink[100]
+                                : Colors.white,
+                            child: Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(
+                                      height: 35,
+                                      child: Text(
+                                        _scheduleDay[index],
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: RaisedButton(
+                                      color: scheduleData[index].slot1
+                                          ? Colors.redAccent
+                                          : Colors.greenAccent,
+                                      onPressed: () {},
+                                      child: Text('Slot 1'),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 10),
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      height: 50,
+                                      child: RaisedButton(
                                         color: scheduleData[index].slot2
                                             ? Colors.redAccent
                                             : Colors.greenAccent,
                                         onPressed: () {},
-                                        child: Text(scheduleData[index]
-                                            .slot2
-                                            .toString()),
+                                        child: Text('Slot 2'),
                                       ),
-                                      RaisedButton(
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 10),
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      height: 50,
+                                      child: RaisedButton(
                                         color: scheduleData[index].slot3
                                             ? Colors.redAccent
                                             : Colors.greenAccent,
                                         onPressed: () {},
-                                        child: Text(scheduleData[index]
-                                            .slot3
-                                            .toString()),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
+                                        child: Text('Slot 3'),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }),
+          ),
 
           //book
           Container(

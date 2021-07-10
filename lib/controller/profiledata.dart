@@ -22,8 +22,7 @@ class ProfileDataService {
       extraInfo: snapshot.data['extraInfo'],
       image: snapshot.data['image'],
       exam: snapshot.data['exam'],
-      spm: snapshot.data['spm'],
-      pt3: snapshot.data['pt3'],
+      subject: snapshot.data['subject'],
     );
   }
 
@@ -49,8 +48,7 @@ class ProfileDataService {
       'education': 'Please fill',
       'extraInfo': 'Please fill',
       'image': img,
-      'spm': [],
-      'pt3': [],
+      'subect': [],
     });
   }
 
@@ -68,24 +66,24 @@ class ProfileDataService {
   }
 
   // update subjects array
-  Future updateSubject(String exam, String subject) async {
+  Future updateSubject(String subject) async {
     return await profileCollection.document(uid).updateData({
-      exam: FieldValue.arrayUnion([subject]),
+      'subject': FieldValue.arrayUnion([subject]),
     });
   }
 
   // delete subject from array
-  Future deleteSubject(String exam, String subject) async {
+  Future deleteSubject(String subject) async {
     return await profileCollection.document(uid).updateData({
-      exam: FieldValue.arrayRemove([subject]),
+      'subject': FieldValue.arrayRemove([subject]),
     });
   }
 
   // update teaching info
-  Future updateTutoringData(String exam, String subject) async {
+  Future updateTutoringData(String subject) async {
     return await profileCollection
         .document(uid)
-        .updateData({'exam': exam, 'subject': subject});
+        .updateData({'subject': subject});
   }
 
   // update image data

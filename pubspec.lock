@@ -71,6 +71,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
+  fancy_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: fancy_bottom_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   ffi:
     dependency: transitive
     description:
@@ -106,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.4"
+  flashy_tab_bar:
+    dependency: "direct main"
+    description:
+      name: flashy_tab_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -406,6 +420,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.15"
+  timeline_tile:
+    dependency: "direct main"
+    description:
+      name: timeline_tile
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   transformer_page_view:
     dependency: transitive
     description:
