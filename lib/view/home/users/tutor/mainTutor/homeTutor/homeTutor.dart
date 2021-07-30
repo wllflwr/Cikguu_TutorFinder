@@ -28,6 +28,8 @@ class HomeTutor extends StatelessWidget {
   Widget build(BuildContext context) {
     final profile = Provider.of<Profile>(context);
 
+    print(profile.fullName);
+
     return Scaffold(
       backgroundColor: yl,
       body: ListView(

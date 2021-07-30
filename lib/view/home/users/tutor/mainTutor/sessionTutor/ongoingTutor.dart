@@ -121,12 +121,7 @@ class _OngoingTutorState extends State<OngoingTutor> {
                     },
                   );
                 } else {
-                  return Container(
-                    color: Colors.blue[200],
-                    child: Center(
-                        heightFactor: 15.0,
-                        child: Text('No pending tutor session')),
-                  );
+                  return NoSession(hd: hd, yl: yl, bl: bl, wy: wy);
                 }
               },
             ),

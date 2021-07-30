@@ -53,80 +53,82 @@ class _PendingTutorState extends State<PendingTutor> {
             child: ListView.builder(
               itemCount: sessionData.length,
               itemBuilder: (context, index) {
-                return StreamBuilder(
-                  stream: ProfileDataService(uid: sessionData[index].tuteeid)
-                      .profile,
-                  builder:
-                      (BuildContext context, AsyncSnapshot<Profile> snapshot) {
-                    if (snapshot.hasData) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: wy,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
+                if (sessionData[index].status == 'pending') {
+                  return StreamBuilder(
+                    stream: ProfileDataService(uid: sessionData[index].tuteeid)
+                        .profile,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<Profile> snapshot) {
+                      if (snapshot.hasData) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: wy,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
+                            ),
                           ),
-                        ),
-                        margin: EdgeInsets.all(20),
-                        child: Column(
-                          children: <Widget>[
-                            //Text(sessionData[index].sessid),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    sessionData[index].subject.toUpperCase(),
-                                    style: sb,
-                                  ),
-                                  SizedBox(height: 20),
-                                  ProfileDisplay(
-                                      snapshot: snapshot,
-                                      sessionData: sessionData,
-                                      index: index),
-                                  SizedBox(height: 25),
-                                  Center(
-                                    child: Container(
-                                      child: Center(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: <Widget>[
-                                            RaisedButton(
-                                                color: gn,
-                                                child: Text('Accept'),
-                                                onPressed: () async {
-                                                  await TutorDataService()
-                                                      .updateTutorSessionData(
-                                                          sessionData[index]
-                                                              .sessid,
-                                                          'accept');
-                                                }),
-                                            RaisedButton(
-                                                color: rd,
-                                                child: Text('Reject'),
-                                                onPressed: () async {
-                                                  await TutorDataService()
-                                                      .updateTutorSessionData(
-                                                          sessionData[index]
-                                                              .sessid,
-                                                          'reject');
-                                                })
-                                          ],
+                          margin: EdgeInsets.all(20),
+                          child: Column(
+                            children: <Widget>[
+                              //Text(sessionData[index].sessid),
+                              Container(
+                                padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      sessionData[index].subject.toUpperCase(),
+                                      style: sb,
+                                    ),
+                                    SizedBox(height: 20),
+                                    ProfileDisplay(
+                                        snapshot: snapshot,
+                                        sessionData: sessionData,
+                                        index: index),
+                                    SizedBox(height: 25),
+                                    Center(
+                                      child: Container(
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: <Widget>[
+                                              RaisedButton(
+                                                  color: gn,
+                                                  child: Text('Accept'),
+                                                  onPressed: () async {
+                                                    await TutorDataService()
+                                                        .updateTutorSessionData(
+                                                            sessionData[index]
+                                                                .sessid,
+                                                            'accept');
+                                                  }),
+                                              RaisedButton(
+                                                  color: rd,
+                                                  child: Text('Reject'),
+                                                  onPressed: () async {
+                                                    await TutorDataService()
+                                                        .updateTutorSessionData(
+                                                            sessionData[index]
+                                                                .sessid,
+                                                            'reject');
+                                                  })
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      return Loading();
-                    }
-                  },
-                );
+                            ],
+                          ),
+                        );
+                      } else {
+                        return NoSession(hd: hd, yl: yl, bl: bl, wy: wy);
+                      }
+                    },
+                  );
+                }
               },
             ),
           ),

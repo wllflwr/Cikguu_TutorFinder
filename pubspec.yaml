@@ -48,6 +48,8 @@ dependencies:
   flashy_tab_bar: ^0.0.3
   fancy_bottom_bar: ^0.0.1
   timeline_tile: ^1.0.0
+  flutter_rating_bar: ^3.0.0
+  percent_indicator: "^1.0.16"
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,7 @@
+import 'package:cikguu_app/controller/ratedata.dart';
 import 'package:cikguu_app/controller/tutordata.dart';
 import 'package:cikguu_app/model/profile.dart';
+import 'package:cikguu_app/model/rate.dart';
 import 'package:cikguu_app/model/session.dart';
 import 'package:cikguu_app/view/home/users/tutee/dashboardTutee.dart';
 import 'package:cikguu_app/view/home/users/tutee/mainTutee/sessionTutee/historyTutee.dart';

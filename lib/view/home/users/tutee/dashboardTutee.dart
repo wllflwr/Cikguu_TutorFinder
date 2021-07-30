@@ -4,6 +4,8 @@ import 'package:cikguu_app/view/home/loading.dart';
 import 'package:cikguu_app/view/home/users/tutee/mainTutee/browseTutee/browseTutee.dart';
 import 'package:cikguu_app/view/home/users/tutee/mainTutee/homeTutee/homeTutee.dart';
 import 'package:cikguu_app/view/home/users/tutee/mainTutee/sessionTutee/testwrapperTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/mainTutee/subjectTutee/subjectTutee.dart';
+import 'package:cikguu_app/view/home/users/tutee/mainTutee/subjectTutee/subjectWrapperTutee.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -416,7 +418,8 @@ class _MenuSection extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Loading()),
+                      MaterialPageRoute(
+                          builder: (context) => SubjectWrapperTutee()),
                     );
                   },
                 ),

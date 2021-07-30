@@ -39,7 +39,7 @@ class GridOptions extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  BrowseResult(subject: layout.eng.toLowerCase()),
+                  BrowseResult(exam: 'spm', subject: layout.eng.toLowerCase()),
             ),
           );
         },

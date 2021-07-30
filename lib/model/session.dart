@@ -10,6 +10,8 @@ class Session {
   final String venue;
   final int slot;
   final String status;
+  final bool rate;
+  final bool mark;
 
   Session(
     this.sessid,
@@ -23,5 +25,7 @@ class Session {
     this.venue,
     this.slot,
     this.status,
+    this.rate,
+    this.mark,
   );
 }

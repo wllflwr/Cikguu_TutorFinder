@@ -1,5 +1,6 @@
 import 'package:cikguu_app/controller/auth.dart';
 import 'package:cikguu_app/model/user.dart';
+import 'package:cikguu_app/view/authenticate/authenticate.dart';
 import 'package:cikguu_app/view/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Wrapper(),
+        //home: Authenticate(),
       ),
     );
   }

@@ -9,7 +9,7 @@ class HomeWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profile = Provider.of<Profile>(context);
-    //print(profile.type);
+    //print(profile.fullName);
 
     if (profile == null) {
       return Loading();

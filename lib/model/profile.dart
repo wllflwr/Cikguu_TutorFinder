@@ -10,6 +10,7 @@ class Profile {
   final String image;
   final String exam;
   final List<dynamic> subject;
+  final double price;
 
   Profile({
     this.uid,
@@ -23,6 +24,7 @@ class Profile {
     this.image,
     this.exam,
     this.subject,
+    this.price,
   });
 
   String toString() {

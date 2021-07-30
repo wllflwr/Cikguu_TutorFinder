@@ -1,8 +1,5 @@
-import 'package:cikguu_app/model/profile.dart';
-import 'package:cikguu_app/model/session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:cikguu_app/model/global.dart';
 
 class Header extends StatelessWidget {
   const Header({

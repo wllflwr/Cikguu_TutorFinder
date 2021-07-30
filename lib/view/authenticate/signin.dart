@@ -31,14 +31,6 @@ class _SingInState extends State<SingIn> {
     fontSize: 14,
   );
 
-  // final BoxDecoration gradient = BoxDecoration(
-  //   gradient: LinearGradient(
-  //     begin: Alignment.topLeft,
-  //     end: Alignment.bottomRight,
-  //     colors: [og, pn],
-  //   ),
-  // );
-
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;

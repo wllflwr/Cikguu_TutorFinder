@@ -1,29 +1,35 @@
+import 'package:cikguu_app/controller/evaluatedata.dart';
 import 'package:cikguu_app/controller/profiledata.dart';
-import 'package:cikguu_app/controller/subjectdata.dart';
+import 'package:cikguu_app/model/global.dart';
 import 'package:cikguu_app/model/profile.dart';
 import 'package:cikguu_app/view/home/users/globalWidgetTutor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cikguu_app/model/global.dart';
 
-class SubjectTutor extends StatefulWidget {
+class ManageSubjectTutee extends StatefulWidget {
+  //const ManageSubjectTutee({ Key? key }) : super(key: key);
+
   @override
-  _SubjectTutorState createState() => _SubjectTutorState();
+  _ManageSubjectTuteeState createState() => _ManageSubjectTuteeState();
 }
 
-class _SubjectTutorState extends State<SubjectTutor> {
+class _ManageSubjectTuteeState extends State<ManageSubjectTutee> {
   @override
   Widget build(BuildContext context) {
+    final String hd = 'Manage Subject';
     final profile = Provider.of<Profile>(context);
-    final String hd = 'Subject';
 
     var _subjectState = new List(subjectList.length);
 
     for (int i = 0; i < subjectList.length; i++) {
-      if (profile.subject.contains(subjectList[i].eng.toLowerCase())) {
-        _subjectState[i] = true;
-      } else {
+      if (profile.subject == null) {
         _subjectState[i] = false;
+      } else {
+        if (profile.subject.contains(subjectList[i].eng.toLowerCase())) {
+          _subjectState[i] = true;
+        } else {
+          _subjectState[i] = false;
+        }
       }
     }
 
@@ -35,7 +41,6 @@ class _SubjectTutorState extends State<SubjectTutor> {
       ),
       body: Container(
         color: wy,
-        //controller: _tabController,
         child: Container(
           padding: EdgeInsets.only(
             top: 20,
@@ -53,8 +58,9 @@ class _SubjectTutorState extends State<SubjectTutor> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Center(
-                    child: Text(
-                        'Please click subject you teach until turns green')),
+                  child: Text(
+                      'Please click subject you take for your exam until turns green'),
+                ),
               ),
               Expanded(
                 child: GridView.count(
@@ -82,12 +88,9 @@ class _SubjectTutorState extends State<SubjectTutor> {
                         });
                         if (_subjectState[index]) {
                           // add in subject collection
-                          await SubjectDataService(uid: profile.uid)
-                              .addSubjectTutorSPM(
-                                  profile.fullName,
-                                  profile.image,
-                                  subjectList[index].eng.toLowerCase(),
-                                  profile.price);
+                          await EvaluateDataService(uid: profile.uid)
+                              .updateEvaluationData(
+                                  subjectList[index].eng.toLowerCase(), 0.0);
 
                           // add in profile collection
                           await ProfileDataService(uid: profile.uid)
@@ -95,9 +98,10 @@ class _SubjectTutorState extends State<SubjectTutor> {
                                   subjectList[index].eng.toLowerCase());
                         } else {
                           // remove in profile collection
-                          await SubjectDataService(uid: profile.uid)
-                              .deleteSubjectTutorSPM(
-                                  subjectList[index].eng.toLowerCase());
+                          await EvaluateDataService(uid: profile.uid)
+                              .deleteEvaluationSubject(
+                            subjectList[index].eng.toLowerCase(),
+                          );
 
                           // remove from profile subject array
                           await ProfileDataService(uid: profile.uid)

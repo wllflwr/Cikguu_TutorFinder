@@ -1,4 +1,5 @@
 import 'package:cikguu_app/controller/auth.dart';
+import 'package:cikguu_app/model/global.dart';
 //import 'package:cikguu_app/controller/scheduledata.dart';
 import 'package:flutter/material.dart';
 
@@ -45,20 +46,6 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: false,
-
-      // appBar: AppBar(
-      //   title: Text('Register'),
-      //   backgroundColor: Colors.purColors.blacke,
-      //   actions: <Widget>[
-      //     FlatButton.icon(
-      //       onPressed: () {
-      //         widget.toggleView();
-      //       },
-      //       icon: Icon(Icons.person),
-      //       label: Text('Signin'),
-      //     )
-      //   ],
-      // ),
       body: Container(
         child: Column(
           children: <Widget>[
@@ -197,6 +184,10 @@ class _RegisterState extends State<Register> {
                         height: 20.0,
                       ),
                       DropdownButton(
+                          underline: Container(
+                            height: 1,
+                            color: bl,
+                          ),
                           style: _label,
                           hint: Text(
                             'Select Role',

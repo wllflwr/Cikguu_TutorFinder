@@ -23,6 +23,7 @@ class ProfileDataService {
       image: snapshot.data['image'],
       exam: snapshot.data['exam'],
       subject: snapshot.data['subject'],
+      price: snapshot.data['price'],
     );
   }
 
@@ -49,6 +50,7 @@ class ProfileDataService {
       'extraInfo': 'Please fill',
       'image': img,
       'subect': [],
+      'price': 0.0,
     });
   }
 
@@ -62,6 +64,13 @@ class ProfileDataService {
       'address': address,
       'education': education,
       'extraInfo': extra,
+    });
+  }
+
+  // update price rate data
+  Future updatePriceData(double price) async {
+    return await profileCollection.document(uid).updateData({
+      'price': price,
     });
   }
 

@@ -24,6 +24,8 @@ class TutorDataService {
       'slot': slot,
       'venue': venue,
       'status': 'pending',
+      'rate': true,
+      'mark': true,
     });
     //.then((value) => sessid = value.documentID);
   }
@@ -42,6 +44,8 @@ class TutorDataService {
         doc.data['venue'],
         doc.data['slot'],
         doc.data['status'],
+        doc.data['rate'],
+        doc.data['mark'],
       );
     }).toList();
   }
@@ -54,10 +58,31 @@ class TutorDataService {
         .map(_sessionFromSnapshot);
   }
 
+  // update rate data
+  Future updateRateData() async {
+    return await sessionCollection.document(id).updateData({
+      'rate': false,
+    });
+  }
+
+  // update mark data
+  Future updateMarkData() async {
+    return await sessionCollection.document(id).updateData({
+      'mark': false,
+    });
+  }
+
   // update tutor session
   Future updateTutorSessionData(String sessid, String status) async {
     return await sessionCollection.document(sessid).updateData({
       'status': status,
+    });
+  }
+
+  // update tutor session
+  Future feedTutorSessionData(String sessid, bool rate) async {
+    return await sessionCollection.document(sessid).updateData({
+      'rate': rate,
     });
   }
 

@@ -18,7 +18,9 @@ class _BrowseResultState extends State<BrowseResult> {
   final Color yl = Color(0xffF0C742);
   final Color wy = Colors.white;
   final Color bl = Colors.black;
-  final TextStyle torName = new TextStyle(fontSize: 16.0);
+  final TextStyle torName =
+      new TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold);
+  final TextStyle subText = new TextStyle(fontSize: 16.0);
 
   @override
   Widget build(BuildContext context) {
@@ -57,30 +59,32 @@ class _BrowseResultState extends State<BrowseResult> {
               } else {
                 return ListView(
                   children: snapshot.data.documents.map((document) {
-                    print('trying to see tutor id');
-                    print(document.documentID);
+                    //print('trying to see tutor id');
+                    //print(document.documentID);
                     return Container(
                       color: yl,
                       child: Container(
-                        //color: Colors.red[300],
                         padding:
                             EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
                         child: RaisedButton(
-                            padding: EdgeInsets.only(
-                                left: 25.0, right: 25.0, top: 10.0),
-                            //color: Colors.red[200],
+                            padding: EdgeInsets.all(20),
+                            color: wy,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
                                       document['name'],
                                       style: torName,
                                     ),
+                                    SizedBox(height: 5),
                                     Text(
-                                      'RM10/hour',
-                                      style: torName,
+                                      'RM' +
+                                          document['price'].toStringAsFixed(2) +
+                                          ' /hour',
+                                      style: subText,
                                     ),
                                   ],
                                 ),

@@ -1,5 +1,9 @@
+import 'package:cikguu_app/controller/evaluatedata.dart';
+import 'package:cikguu_app/controller/feeddata.dart';
 import 'package:cikguu_app/controller/profiledata.dart';
+import 'package:cikguu_app/controller/ratedata.dart';
 import 'package:cikguu_app/controller/scheduledata.dart';
+import 'package:cikguu_app/controller/subjectdata.dart';
 import 'package:cikguu_app/model/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -64,10 +68,13 @@ class AuthService {
         uid: user.uid,
       ).createProfileData(usertype, name, phone);
 
-      // print('create schedule..');
       // create tutor schedule
       if (usertype) {
         await ScheduleDataService(uid: user.uid).createScheduleData();
+        await FeedDataService(uid: user.uid).createFeedbackData();
+        await RateDataService(uid: user.uid).createRateData();
+      } else {
+        await EvaluateDataService(uid: user.uid).createEvaluationData();
       }
 
       return _userFromFirebaseUser(user);
