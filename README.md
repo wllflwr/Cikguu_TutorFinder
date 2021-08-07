@@ -12,3 +12,9 @@ Cikguu app is developed with Flutter with Google Firestore as database.
 
 UI Sketch:
 https://www.figma.com/file/0hDvM6X8Fiurl8tAlRVnpV/Cikguu?node-id=0%3A1
+
+Presentation Video:
+https://youtu.be/CfcfeX9UKDY
+
+Demo Video:
+https://youtu.be/Zf1L_jQs4cQ
