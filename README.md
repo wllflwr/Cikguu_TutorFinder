@@ -9,3 +9,6 @@ Tutee:
 Can register and browse list of available tutor based on subject to book a tutor session.
 
 Cikguu app is developed with Flutter with Google Firestore as database.
+
+UI Sketch:
+https://www.figma.com/file/0hDvM6X8Fiurl8tAlRVnpV/Cikguu?node-id=0%3A1
