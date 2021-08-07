@@ -112,7 +112,7 @@ class _HistoryTutorState extends State<HistoryTutor> {
                                                 children: <Widget>[
                                                   RaisedButton(
                                                     color: Colors.blue[300],
-                                                    child: Text('Rate'),
+                                                    child: Text('Evaluate'),
                                                     onPressed:
                                                         sessionData[index].mark
                                                             ? () {

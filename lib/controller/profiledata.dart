@@ -36,8 +36,10 @@ class ProfileDataService {
   }
 
   // create profile data
-  String img =
-      'https://firebasestorage.googleapis.com/v0/b/cikguu-app.appspot.com/o/data%2Fuser%2F0%2Fcom.example.cikguu_app%2Fcache%2Fuser.png?alt=media&token=764e87b9-d621-4bee-bd4c-3ce5f6ec8b08';
+  String tee =
+      'https://firebasestorage.googleapis.com/v0/b/cikguu-app.appspot.com/o/595271aabbdbfbc2d7bd5b85b7227540.png?alt=media&token=6e37ea89-3ffb-42e2-b15f-60095b125a26';
+  String tor =
+      'https://firebasestorage.googleapis.com/v0/b/cikguu-app.appspot.com/o/0f2a9a9dfdca0374082be57293ad9424.png?alt=media&token=12ab22b6-14e3-4230-9483-821197a67e67';
   Future createProfileData(
       bool userType, String fullName, String phoneNumber) async {
     return await profileCollection.document(uid).setData({
@@ -48,7 +50,7 @@ class ProfileDataService {
       'address': 'Please fill',
       'education': 'Please fill',
       'extraInfo': 'Please fill',
-      'image': img,
+      'image': userType ? tor : tee,
       'subect': [],
       'price': 0.0,
     });

@@ -88,18 +88,25 @@ class _FeedbackTutorState extends State<FeedbackTutor> {
                     children: <Widget>[
                       Container(
                         color: wy,
-                        child: RatingBar.builder(
-                          initialRating: snapshot.data['rate'], //currentRate,
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          onRatingUpdate: null,
+                        child: Column(
+                          children: <Widget>[
+                            Center(child: Text('Current Rating by Tutee')),
+                            RatingBar.builder(
+                              initialRating:
+                                  snapshot.data['rate'], //currentRate,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: null,
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(

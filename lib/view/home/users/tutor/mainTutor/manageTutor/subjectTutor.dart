@@ -20,8 +20,12 @@ class _SubjectTutorState extends State<SubjectTutor> {
     var _subjectState = new List(subjectList.length);
 
     for (int i = 0; i < subjectList.length; i++) {
-      if (profile.subject.contains(subjectList[i].eng.toLowerCase())) {
-        _subjectState[i] = true;
+      if (profile.subject != null) {
+        if (profile.subject.contains(subjectList[i].eng.toLowerCase())) {
+          _subjectState[i] = true;
+        } else {
+          _subjectState[i] = false;
+        }
       } else {
         _subjectState[i] = false;
       }

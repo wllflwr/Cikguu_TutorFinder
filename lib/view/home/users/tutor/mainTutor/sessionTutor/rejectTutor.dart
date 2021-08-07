@@ -54,7 +54,7 @@ class _RejectTutorState extends State<RejectTutor> {
               itemCount: sessionData.length,
               itemBuilder: (context, index) {
                 return StreamBuilder(
-                  stream: ProfileDataService(uid: sessionData[index].tutorid)
+                  stream: ProfileDataService(uid: sessionData[index].tuteeid)
                       .profile,
                   builder:
                       (BuildContext context, AsyncSnapshot<Profile> snapshot) {

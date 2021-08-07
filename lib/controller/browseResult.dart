@@ -52,11 +52,7 @@ class _BrowseResultState extends State<BrowseResult> {
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) {
-                return Center(
-                  child: Text('Sorry no tutor available for this subject'),
-                );
-              } else {
+              if (snapshot.hasData) {
                 return ListView(
                   children: snapshot.data.documents.map((document) {
                     //print('trying to see tutor id');
@@ -119,6 +115,10 @@ class _BrowseResultState extends State<BrowseResult> {
                       ),
                     );
                   }).toList(),
+                );
+              } else {
+                return Center(
+                  child: Text('Sorry no tutor available for this subject'),
                 );
               }
             },

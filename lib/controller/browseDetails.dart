@@ -49,6 +49,8 @@ class _BrowseDetailsState extends State<BrowseDetails>
   String dt;
   String dy;
 
+  final snackBar = SnackBar(content: Text('Booking request sent!'));
+
   List<String> _scheduleDay = new List(7);
   String harini = 'Today';
 
@@ -434,6 +436,7 @@ class _BrowseDetailsState extends State<BrowseDetails>
           ),
 
           //book
+
           Container(
               color: wy,
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
@@ -480,9 +483,7 @@ class _BrowseDetailsState extends State<BrowseDetails>
                           setState(() {
                             _bookDate = date;
                             //DateFormat("yyyy-MM-dd").format(DateTime.now()))
-                            dt = DateFormat('dd-mm-yyyy')
-                                .format(_bookDate)
-                                .toString();
+                            dt = DateFormat('yMd').format(_bookDate).toString();
                             dy = _bookDate.day.toString();
                           });
                         });
@@ -555,6 +556,42 @@ class _BrowseDetailsState extends State<BrowseDetails>
                           await _session.addTutorSession(widget.idTutor,
                               user.uid, widget.subject, dt, dy, sl, vn);
                         }
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                content: Stack(
+                                    overflow: Overflow.visible,
+                                    children: <Widget>[
+                                      Positioned(
+                                        right: -40.0,
+                                        top: -40.0,
+                                        child: InkResponse(
+                                          onTap: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: CircleAvatar(
+                                            child: Icon(Icons.close, color: yl),
+                                            backgroundColor: bl,
+                                          ),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                top: 10.0, bottom: 10),
+                                            child: Center(
+                                              child:
+                                                  Text('Booking request sent!'),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ]),
+                              );
+                            });
                       },
                       color: bl,
                       child: Container(
