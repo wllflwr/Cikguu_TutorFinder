@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Personal Tutor Finder is a mobile app allows users to find and book a personal tutor based on their location and time also based on the tutor’s education and experience efficiently and instantly. This app contains two type of user:
+
+Tutor:
+Can register and select subjects to teach based on the list of subject in the app and accept or reject tutor session requested from tutee.
+
+Tutee:
+Can register and browse list of available tutor based on subject to book a tutor session.
+
+Cikguu app is developed with Flutter with Google Firestore as database.
